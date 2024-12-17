@@ -52,10 +52,10 @@ propaganda/
 ## 📊 Dados e Resultados
 
 ### Base de Dados
-A base utilizada está no arquivo `advertising.csv` na pasta `data/`.
+A base utilizada está no arquivo `advertising.csv`.
 
 ### Visualizações
-- **Regressão Linear Simples**: Representação gráfica na pasta `imgs/`.
+- **Regressão Linear Simples**: Representação gráfica.
 - **Regressão Múltipla**: Resultados com grau 2 e 3.
 
 ## 🖥️ Tecnologias Utilizadas
