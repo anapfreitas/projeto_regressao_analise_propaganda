@@ -8,21 +8,21 @@ Este projeto realiza análises de dados usando regressão linear e múltipla par
 ```
 propaganda/
 │
-├── data/
+|
 │   └── advertising.csv           # Base de dados
 │
-├── imgs/
+├── imgs
 │   ├── grafico_regressao_multipla_grau_2.png
 │   ├── grafico_regressao_multipla_grau_3.png
 │   └── regressao_linear_simples.png
 │
-├── src/
+├── src
 │   └── script.js                 # Scripts JavaScript
 │
-├── style/
+├── style
 │   └── style.css                 # Estilos CSS
 │
-├── pages/
+├── pages
 │   ├── base_dados.html
 │   ├── coeficientes.html
 │   ├── previsao.html
