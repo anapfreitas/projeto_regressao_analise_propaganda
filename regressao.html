@@ -27,12 +27,12 @@
         </div>
     </div>
     <script>
-        // Lógica para armazenar o grau selecionado no localStorage
+        
         document.getElementById("btnProximo").addEventListener("click", () => {
             const grauSelecionado = document.querySelector("input[name='polinomio']:checked");
             if (grauSelecionado) {
                 localStorage.setItem("grauSelecionado", grauSelecionado.value);
-                window.location.href = "coeficientes.html"; // Redireciona para a página de coeficientes
+                window.location.href = "coeficientes.html"; 
             } else {
                 alert("Por favor, selecione um grau de polinômio antes de prosseguir.");
             }
