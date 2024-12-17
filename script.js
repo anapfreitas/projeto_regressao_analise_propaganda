@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const grauSelecionado = localStorage.getItem("grauSelecionado"); // Recupera o grau do localStorage
+    const grauSelecionado = localStorage.getItem("grauSelecionado"); 
     const tituloGrau = document.getElementById("grau");
     const formula = document.getElementById("formula");
     const coeficientesContainer = document.getElementById("coeficientes-container");
@@ -46,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const grauAtual = coeficientes[grauSelecionado];
 
     if (grauAtual) {
-        // Atualiza os elementos na página
+        
         tituloGrau.textContent = grauSelecionado;
         formula.textContent = grauAtual.formula;
 
-        // Adiciona os valores dos coeficientes
-        coeficientesContainer.innerHTML = ""; // Limpa os coeficientes anteriores
+       
+        coeficientesContainer.innerHTML = ""; 
         Object.keys(grauAtual.valores).forEach((key) => {
             const coefDiv = document.createElement("div");
             coefDiv.classList.add("valor-coeficiente");
