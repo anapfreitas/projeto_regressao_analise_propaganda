@@ -66,6 +66,8 @@ A base utilizada está no arquivo `advertising.csv`.
 ## 📷 Imagens de Gráficos
 
 ![Regressão Linear Simples](regressao_linear_simples.png)
+![Regressão Linear Múltipla Grau 2](grafico_regressao_multipla_grau_2.png)
+![Regressão Linear Múltipla Grau 3](grafico_regressao_multipla_grau_3.png)
 
 ## 🏷️ Licença
 Este projeto está sob a licença MIT.
