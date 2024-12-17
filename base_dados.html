@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Dados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="base-container">
+        <h1>Base de Dados</h1>
+        <div id="table-container">
+        </div>
+        <div class="button-container">
+            <a href="index.html" class="menu-button">Voltar</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tableContainer = document.getElementById("table-container");
+            const csvFilePath = "advertising.csv"; 
+
+            async function loadCSV(filePath) {
+                try {
+                    const response = await fetch(filePath);
+                    if (!response.ok) throw new Error("Erro ao carregar o arquivo CSV.");
+                    const csvText = await response.text();
+                    const data = parseCSV(csvText);
+                    renderTable(data);
+                } catch (error) {
+                    console.error(error.message);
+                    tableContainer.innerHTML = "<p>Erro ao carregar os dados.</p>";
+                }
+            }
+
+            function parseCSV(csvText) {
+                const rows = csvText.trim().split("\n").map(row => row.split(","));
+                return rows;
+            }
+
+            function renderTable(data) {
+                const table = document.createElement("table");
+                table.classList.add("data-table");
+
+                const headerRow = document.createElement("tr");
+                data[0].forEach(header => {
+                    const th = document.createElement("th");
+                    th.textContent = header.trim();
+                    headerRow.appendChild(th);
+                });
+                table.appendChild(headerRow);
+
+                for (let i = 1; i < data.length; i++) {
+                    const row = document.createElement("tr");
+                    data[i].forEach(cell => {
+                        const td = document.createElement("td");
+                        td.textContent = cell.trim();
+                        row.appendChild(td);
+                    });
+                    table.appendChild(row);
+                }
+
+                tableContainer.appendChild(table);
+            }
+
+            loadCSV(csvFilePath);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="previsao-container">
+        <h1>Previsão</h1>
+        <p class="grau-texto">Polinômio de Grau <span id="grau">1</span></p>
+        <div id="input-container">
+            <p>Insira o valor de investimento em TV (em milhares de dólares):</p>
+            <input type="number" id="tv" placeholder="Digite o valor de TV">
+            <div id="radio-container" style="display: none;">
+                <p>Insira o valor de investimento em Rádio (em milhares de dólares):</p>
+                <input type="number" id="radio" placeholder="Digite o valor de Rádio">
+            </div>
+        </div>
+
+        <button id="calcular" class="menu-button calcular">Calcular</button>
+
+        <div id="resultado-container" class="resultado-container" style="display: none;">
+            <p>Previsão de vendas:</p>
+            <div id="resultado" class="resultado-box"></div>
+        </div>
+
+        <div class="button-container">
+            <a href="visualizacao_dados.html" class="menu-button">Voltar</a>
+            <a href="index.html" class="menu-button">Sair</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const grauSelecionado = localStorage.getItem("grauSelecionado") || "1";
+
+            // Coeficientes para cada grau de polinômio
+            const coeficientes = {
+                1: { valores: { A: 0.0555, B: 6.9748 } },
+                2: { 
+                    valores: { 
+                        A: 0.0862, 
+                        B: 0.0175, 
+                        C: -0.0001, 
+                        D: 0.002, 
+                        Intercept: 3.7413 
+                    }
+                },
+                3: { 
+                    valores: { 
+                        A: 0.099, 
+                        B: 0.1726, 
+                        C: -0.0002, 
+                        D: -0.006, 
+                        E: 2.68E-07, 
+                        F: 0.0001, 
+                        Intercept: 2.8782 
+                    }
+                },
+            };
+
+            const calcularBtn = document.getElementById("calcular");
+            const tvInput = document.getElementById("tv");
+            const radioInput = document.getElementById("radio");
+            const resultadoContainer = document.getElementById("resultado-container");
+            const resultadoBox = document.getElementById("resultado");
+            const grauTexto = document.getElementById("grau");
+            const radioContainer = document.getElementById("radio-container");
+
+            // Atualiza a interface com base no polinômio selecionado
+            grauTexto.textContent = grauSelecionado;
+
+            if (grauSelecionado === "2" || grauSelecionado === "3") {
+                radioContainer.style.display = "block"; // Mostra o campo de Rádio para polinômios não lineares
+            } else {
+                radioContainer.style.display = "none"; // Oculta para polinômio linear
+            }
+
+            // Calcula o valor com base no polinômio selecionado
+            calcularBtn.addEventListener("click", () => {
+                const tv = parseFloat(tvInput.value) || 0; // Valor de TV
+                const radio = parseFloat(radioInput?.value || 0); // Valor de Rádio (se aplicável)
+
+                if (tv <= 0 || (radioContainer.style.display === "block" && radio <= 0)) {
+                    alert("Por favor, insira valores válidos.");
+                    return;
+                }
+
+                const coef = coeficientes[grauSelecionado];
+                let resultado = 0;
+
+                if (grauSelecionado === "1") {
+                    resultado = coef.valores.A * tv + coef.valores.B;
+                } else if (grauSelecionado === "2") {
+                    resultado = 
+                        coef.valores.A * tv + 
+                        coef.valores.B * radio + 
+                        coef.valores.C * Math.pow(tv, 2) + 
+                        coef.valores.D * Math.pow(radio, 2) + 
+                        coef.valores.Intercept;
+                } else if (grauSelecionado === "3") {
+                    resultado = 
+                        coef.valores.A * tv + 
+                        coef.valores.B * radio + 
+                        coef.valores.C * Math.pow(tv, 2) + 
+                        coef.valores.D * Math.pow(radio, 2) + 
+                        coef.valores.E * Math.pow(tv, 3) + 
+                        coef.valores.F * Math.pow(radio, 3) + 
+                        coef.valores.Intercept;
+                }
+
+                // Formata o resultado com 2 casas decimais
+                resultadoBox.textContent = `f(sales) = ${resultado.toFixed(2)} milhares de unidades de produto`;
+                resultadoContainer.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>

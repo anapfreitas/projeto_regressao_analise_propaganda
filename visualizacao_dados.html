@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização de Dados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="visualizacao-container">
+        <h1>Visualização de Dados</h1>
+        <div class="grafico-container">
+            <img id="grafico" src="" alt="Gráfico do Polinômio">
+        </div>
+        <div class="button-container">
+            <a href="coeficientes.html" class="menu-button">Voltar</a>
+            <a href="previsao.html" class="menu-button">Próximo</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const grafico = document.getElementById("grafico");
+            const grauSelecionado = localStorage.getItem("grauSelecionado") || "1";
+            const graficos = {
+                1: "imgs/regressao_linear_simples.png",
+                2: "imgs/grafico_regressao_multipla_grau_2.png",
+                3: "imgs/grafico_regressao_multipla_grau_3.png",
+            };
+
+            if (graficos[grauSelecionado]) {
+                grafico.src = graficos[grauSelecionado];
+            } else {
+                grafico.alt = "Gráfico não encontrado.";
+            }
+        });
+    </script>
+</body>
+</html>
