@@ -65,7 +65,7 @@ A base utilizada está no arquivo `advertising.csv`.
 
 ## 📷 Imagens de Gráficos
 
-![Regressão Linear Simples](imgs/regressao_linear_simples.png)
+![Regressão Linear Simples](regressao_linear_simples.png)
 
 ## 🏷️ Licença
 Este projeto está sob a licença MIT.
