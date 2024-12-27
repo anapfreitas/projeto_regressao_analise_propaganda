@@ -40,14 +40,6 @@ propaganda/
 - **Tecnologias**: HTML, CSS, JavaScript.
 - **Resultados**: Foram gerados gráficos e coeficientes das regressões.
 
-## 🚀 Como Rodar
-
-1. Faça o download ou clone este repositório:
-   ```bash
-   git clone <URL-do-seu-repositorio>
-   ```
-2. Abra o arquivo `index.html` no navegador.
-3. Navegue pelas páginas para visualizar análises e gráficos.
 
 ## 📊 Dados e Resultados
 
